@@ -19,7 +19,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>   
-    
+   
+    <link href="css/dashboard.css" rel="stylesheet" type="text/css">
+ 
     <!-- JSON Editor -->
     <link href="jsoneditor/dist/jsoneditor.css" rel="stylesheet" type="text/css">
     <script src="jsoneditor/dist/jsoneditor.js"></script>
@@ -29,9 +31,7 @@
             height: 480px;
             }
         </style>
-
-  <body>
-
+    <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -103,9 +103,15 @@
                 var container = document.getElementById("jsoneditor");
                 var editor = new JSONEditor(container);
 
-                editor.set(); 
-                // get json
-                var json = editor.get();
+                //editor.set(); 
+
+                var testAPI = "http://localhost:5000/test";
+                $.ajax({
+                    url: testAPI,
+                    type: 'GET',
+                    success: function() { editor.set(data); }
+                });
+
                 </script>
             </div> <!-- jsoneditor div -->
       </div>
