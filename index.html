@@ -8,14 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="http://getbootstrap.com/favicon.ico">
 
     <title>Restcontrol entity editor</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>   
+    
     <!-- JSON Editor -->
     <link href="jsoneditor/dist/jsoneditor.css" rel="stylesheet" type="text/css">
     <script src="jsoneditor/dist/jsoneditor.js"></script>
@@ -64,7 +68,6 @@
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h2 class="sub-header">Entities</h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -93,40 +96,20 @@
                 </tr>
               </tbody>
             </table>
-          </div>
-        <div id="jsoneditor">
-          <h2 class="sub-header">Editor</h2>
-        <script>
-        // create the editor
-        var container = document.getElementById("jsoneditor");
-        var editor = new JSONEditor(container);
-
-        // set json
-        var json = {
-            "Array": [1, 2, 3],
-            "Boolean": true,
-            "Null": null,
-            "Number": 123,
-            "Object": {"a": "b", "c": "d"},
-            "String": "Hello World"
-        };
-        editor.set(json); 
-        // get json
-        var json = editor.get();
-        </script>
-
         </div>
+            <div id="jsoneditor">
+                <script>
+                // create the editor
+                var container = document.getElementById("jsoneditor");
+                var editor = new JSONEditor(container);
+
+                editor.set(); 
+                // get json
+                var json = editor.get();
+                </script>
+            </div> <!-- jsoneditor div -->
       </div>
     </div>
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="./Dashboard Template for Bootstrap_files/jquery.min.js"></script>
-    <script src="./Dashboard Template for Bootstrap_files/bootstrap.min.js"></script>
-    <script src="./Dashboard Template for Bootstrap_files/docs.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="./Dashboard Template for Bootstrap_files/ie10-viewport-bug-workaround.js"></script>
   
     </body>
 </html>
