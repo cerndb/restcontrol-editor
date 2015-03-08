@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)http://getbootstrap.com/examples/dashboard/# -->
+<html lang="en">
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="http://getbootstrap.com/favicon.ico">
+
+    <title>Restcontrol entity editor</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+    <!-- JSON Editor -->
+    <link href="jsoneditor/dist/jsoneditor.css" rel="stylesheet" type="text/css">
+    <script src="jsoneditor/dist/jsoneditor.js"></script>
+        <style type="text/css">
+        #jsoneditor {
+            width: 800px;
+            height: 480px;
+            }
+        </style>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="">Restcontrol</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="">Help</a></li>
+          </ul>
+          <form class="navbar-form navbar-right" abineguid="9F5749258BF94E5292D0FD4165870269">
+            <input type="text" class="form-control" placeholder="Edit...">
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="">All</a></li>
+            <li><a href="">Appservers</a></li>
+            <li><a href="">DB On Demand</a></li>
+            <li><a href="">Oracle RDMS</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="">TNS Names</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h2 class="sub-header">Entities</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Entity</th>
+                  <th>Host</th>
+                  <th>Type</th>
+                  <th>Subcategory</th>
+                  <th>Header</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="">Appservers</a></td>
+                  <td>Lorem</td>
+                  <td>ipsum</td>
+                  <td>dolor</td>
+                  <td>sit</td>
+                </tr>
+                <tr>
+                  <td>1,002</td>
+                  <td>amet</td>
+                  <td>consectetur</td>
+                  <td>adipiscing</td>
+                  <td>elit</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        <div id="jsoneditor">
+          <h2 class="sub-header">Editor</h2>
+        <script>
+        // create the editor
+        var container = document.getElementById("jsoneditor");
+        var editor = new JSONEditor(container);
+
+        // set json
+        var json = {
+            "Array": [1, 2, 3],
+            "Boolean": true,
+            "Null": null,
+            "Number": 123,
+            "Object": {"a": "b", "c": "d"},
+            "String": "Hello World"
+        };
+        editor.set(json); 
+        // get json
+        var json = editor.get();
+        </script>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./Dashboard Template for Bootstrap_files/jquery.min.js"></script>
+    <script src="./Dashboard Template for Bootstrap_files/bootstrap.min.js"></script>
+    <script src="./Dashboard Template for Bootstrap_files/docs.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="./Dashboard Template for Bootstrap_files/ie10-viewport-bug-workaround.js"></script>
+  
+    </body>
+</html>
