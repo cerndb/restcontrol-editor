@@ -105,16 +105,14 @@
 
                 //editor.set(); 
 
-                var testAPI = "http://localhost:5000/test";
-                $.ajax({
-                    url: testAPI,
-                    type: 'GET',
-                    success: function() { editor.set(data); }
-                });
+                var testAPI = "http://localhost:5000/api/v1/dod_pinocho";
+                $.getJSON(testAPI, function(data) { editor.set(data) })
+                .always(function (data) { console.log( data )} );
 
                 </script>
             </div> <!-- jsoneditor div -->
       </div>
+  </div>
     </div>
   
     </body>
