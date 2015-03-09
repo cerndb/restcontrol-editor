@@ -47,8 +47,8 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="">Help</a></li>
           </ul>
-          <form class="navbar-form navbar-right" abineguid="9F5749258BF94E5292D0FD4165870269">
-            <input type="text" class="form-control" placeholder="Edit...">
+          <form class="navbar-form navbar-right" id="edit">
+            <input id= "entity" type="text" class="form-control" placeholder="Edit...">
           </form>
         </div>
       </div>
@@ -100,14 +100,18 @@
             <div id="jsoneditor">
                 <script>
                 // create the editor
+                var API = "http://localhost:5000/api/v1/";
+
                 var container = document.getElementById("jsoneditor");
                 var editor = new JSONEditor(container);
 
-                //editor.set(); 
+                $( "#edit" ).submit(function ( event ) {
+                    var entity = $("#entity").val();
+                    $.getJSON(API, entity, function(data) { editor.set(data) })
+                    .always(function (data) { console.log( data )} );
+                  });
 
-                var testAPI = "http://localhost:5000/api/v1/dod_pinocho";
-                $.getJSON(testAPI, function(data) { editor.set(data) })
-                .always(function (data) { console.log( data )} );
+
 
                 </script>
             </div> <!-- jsoneditor div -->
