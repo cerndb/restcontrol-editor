@@ -58,7 +58,7 @@
       <div class="row">
         <div id="sidebar" class="col-sm-3 col-md-2 sidebar">
             <script>
-            var url = 'http://localhost:5000/api/v1/list/domains';
+            var url = 'http://pcitdb46.cern.ch:5000/api/v1/list/domains';
             console.log("Fetching list of domains");
             $.getJSON(url, null, function(data) { 
                 var items = [];
@@ -76,25 +76,27 @@
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <div id="subcategory" class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Subcategory</h3>
-                </div>
-                <div class="panel-body">
-                </div>
+            <div class="btn-group">
+                <select id="subcategory" name="subcategory" class="btn btn-primary"> 
+                    <option value="" > Subcategory </option>
+                </select>
             </div>
-            <div id="type" class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Type</h3>
-                </div>
-                <div class="panel-body">
-                </div>
+            <div class="btn-group">
+                <select id="type" name="type" class="btn btn-warning"> 
+                    <option value=""> Type </option>
+                </select>
             </div>
-            <div id="entities" class="panel panel-default">
+            <div id="entities" class="panel panel-default" style="margin-top: 10px">
                 <div class="panel-heading">
                     <h3 class="panel-title">Entities</h3>
                 </div>
                 <div class="panel-body">
+                <nav>
+                    <ul class="pagination pagination-sm">
+                        <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                    </ul>
+                </nav>
                 </div>
             </div>
             <div id="filters" class="table-responsive">
@@ -119,7 +121,7 @@
         </div>
             <div id="jsoneditor">
                 <script>
-                var API = "http://localhost:5000/api/v1/entities/";
+                var API = "http://pcitdb46.cern.ch:5000/api/v1/entities/";
 
                 // create the editor
                 var container = document.getElementById("jsoneditor");
