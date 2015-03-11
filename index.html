@@ -99,20 +99,20 @@
         </div>
             <div id="jsoneditor">
                 <script>
-                // create the editor
                 var API = "http://localhost:5000/api/v1/";
 
+                // create the editor
                 var container = document.getElementById("jsoneditor");
                 var editor = new JSONEditor(container);
 
                 $( "#edit" ).submit(function ( event ) {
+                    event.preventDefault();
                     var entity = $("#entity").val();
-                    $.getJSON(API, entity, function(data) { editor.set(data) })
+                    var url = API + entity;
+                    console.log("Fetching: " + entity + " from " + url);
+                    $.getJSON(url, null, function(data) { editor.set(data) })
                     .always(function (data) { console.log( data )} );
                   });
-
-
-
                 </script>
             </div> <!-- jsoneditor div -->
       </div>
