@@ -56,16 +56,23 @@
 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-          <ul class="nav nav-sidebar">
-            <li class="active"><a href="">All</a></li>
-            <li><a href="">Appservers</a></li>
-            <li><a href="">DB On Demand</a></li>
-            <li><a href="">Oracle RDMS</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">TNS Names</a></li>
-          </ul>
+        <div id="sidebar" class="col-sm-3 col-md-2 sidebar">
+            <script>
+            var url = 'http://localhost:5000/api/v1/list/domains';
+            console.log("Fetching list of domains");
+            $.getJSON(url, null, function(data) { 
+                var items = [];
+                $.each(data['domains'], function (k,item) {
+                    var link =  "<a href=\"\">" + item + "</a>" ;
+                    items.push( "<li id='" + item + "'>" + link + "</li>" );
+                });
+                $( "<ul/>", {
+                    "class": "nav nav-sidebar",
+                    html: items.join( "" )
+                }).appendTo( "#sidebar" );
+            }).always(function (data) { console.log( data )} );
+
+            </script>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <div class="table-responsive">
