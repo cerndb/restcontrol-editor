@@ -155,7 +155,6 @@
                             entities = data['entities'];
                             $("#entities-table").html("");
                             $.each(entities, function(k, entity) {
-                                console.log('Entity: ' + entity);
                                 $("#entities-table").append(
                                     '<button id=\"' + entity + '\" type=\"button\" class=\"btn-default\">' + entity + '</button');
                                 })
