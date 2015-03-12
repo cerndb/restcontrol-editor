@@ -57,32 +57,62 @@
     <div class="container-fluid">
       <div class="row">
         <div id="sidebar" class="col-sm-3 col-md-2 sidebar">
-            <script>
-            var url = 'http://pcitdb46.cern.ch:5000/api/v1/list/domains';
-            console.log("Fetching list of domains");
-            $.getJSON(url, null, function(data) { 
-                var items = [];
-                $.each(data['domains'], function (k,item) {
-                    var link =  "<a href=\"\">" + item + "</a>" ;
-                    items.push( "<li id='" + item + "'>" + link + "</li>" );
-                });
-                $( "<ul/>", {
-                    "class": "nav nav-sidebar",
-                    html: items.join( "" )
-                }).appendTo( "#sidebar" );
-            }).always(function (data) { console.log( data )} );
-
-            </script>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <div class="btn-group">
-                <select id="subcategory" name="subcategory" class="btn btn-primary"> 
-                    <option value="" > Subcategory </option>
+                <select id="select-domain" name="domain" class="btn btn-default"> 
+                <option value="" > Domain </option>
+                <script>
+                var url = 'http://pcitdb46.cern.ch:5000/api/v1/list/domains';
+                var domain;
+                console.log("Fetching list of domains");
+                $.getJSON(url, null, function(data) { 
+                    var items = [];
+                    $.each(data['domains'], function (k,item) {
+                        $("<option value='" + item + "'>" + item + "</option>")
+                            .appendTo("#select-domain");
+                    });
+                }).always(function (data) { console.log( data )} );
+                </script>
                 </select>
             </div>
             <div class="btn-group">
-                <select id="type" name="type" class="btn btn-warning"> 
-                    <option value=""> Type </option>
+                <select id="select-subcategory" name="subcategory" class="btn btn-primary"> 
+                <option value="" > Subcategory </option>
+                <script>
+                $("#select-domain").change(function() {
+                    var url = 'http://pcitdb46.cern.ch:5000/api/v1/list/subcategories/';
+                    var domain = $("#select-domain").val()
+                    console.log("Fetching list of subcategories for " + domain);
+                    $.getJSON(url+domain, null, function(data) { 
+                        var items = [];
+                        $.each(data['subcategories'], function (k,item) {
+                            $("<option value='" + item + "'>" + item + "</option>")
+                                .appendTo("#select-subcategory");
+                        });
+                    }).always(function (data) { console.log( data )} );
+                });
+                </script>
+                </select>
+            </div>
+            <div class="btn-group">
+                <select id="select-type" name="type" class="btn btn-warning"> 
+                <option value=""> Type </option>
+                <script>
+                $("#select-subcategory").change(function() {
+                    var url = 'http://pcitdb46.cern.ch:5000/api/v1/list/types/';
+                    var domain = $("#select-domain").val();
+                    var subcategory = $("#select-subcategory").val();
+                    console.log("Fetching list of types for " + domain + "/" + subcategory );
+                    $.getJSON(url+domain, null, function(data) { 
+                        var items = [];
+                        $.each(data['type'], function (k,item) {
+                            $("<option value='" + item + "'>" + item + "</option>")
+                                .appendTo("#select-type");
+                        });
+                    }).always(function (data) { console.log( data )} );
+                });
+                </script>
                 </select>
             </div>
             <div id="entities" class="panel panel-default" style="margin-top: 10px">
