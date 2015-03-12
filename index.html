@@ -96,6 +96,7 @@
                             $("<option value='" + item + "'>" + item + "</option>")
                                 .appendTo("#select-subcategory");
                         });
+                        $("#select-subcategory").prepend("<option value=''>Subcategory</option>");
                     }).always(function (data) { console.log( data )} );
                 });
                 </script>
@@ -105,7 +106,7 @@
                 <select id="select-type" name="type" class="btn btn-warning"> 
                 <option value=""> Type </option>
                 <script>
-                $("#select-subcategory").change(function() {
+                $("#select-domain").change(function() {
                     $("#select-type").html("");
                     var url = 'http://pcitdb46.cern.ch:5000/api/v1/list/types/';
                     var domain = $("#select-domain").val();
@@ -117,6 +118,7 @@
                             $("<option value='" + item + "'>" + item + "</option>")
                                 .appendTo("#select-type");
                         });
+                        $("#select-type").prepend("<option value=''>Type</option>");
                     }).always(function (data) { console.log( data )} );
                 });
                 </script>
@@ -130,25 +132,42 @@
                 <div class="btn-group" id="entities-table">
                 </div>
                 <script>
-                    $("#select-domain").change(function () {
+                    function update_entities() {
                         var API = "http://pcitdb46.cern.ch:5000/api/v1/list/entities/"
                         var domain = $("#select-domain").val();
                         var subcategory = $("#select-subcategory").val();
                         var type = $("#select-type").val();
-                        var url = API + domain ;
+                        var url = API + domain;
+                        console.log('Domain ' + domain);
+                        console.log('Subcategory ' + subcategory);
+                        console.log('Type ' + type);
+                        console.log('url ' + url);
+                        if (subcategory != null) {
+                            url += '/' + subcategory
+                        }
+                        if (type != null) {
+                            url += '/' + type
+                        }
+                        console.log('url ' + url);
                         var entities;
                         $.getJSON(url, null, function(data) { 
                             var items = [];
                             entities = data['entities'];
                             $("#entities-table").html("");
-                            for (var row=0; row < entities.length; row++) {
-                                console.log('Entity: ' + entities[row]);
+                            $.each(entities, function(k, entity) {
+                                console.log('Entity: ' + entity);
                                 $("#entities-table").append(
-                                    '<button type=\"button\" class=\"btn-default\">' + entities[row] + '</button');
-                            }
+                                    '<button id=\"' + entity + '\" type=\"button\" class=\"btn-default\">' + entity + '</button');
+                                })
                         });
-
+                    }
+                    $("#select-domain").change(function () {
+                        $("#select-category").html("");
+                        $("#select-type").html("");
+                        update_entities();
                     });
+                    $("#select-subcategory").change(update_entities);
+                    $("#select-type").change(update_entities);
                 </script>
                 </div>
             </div>
