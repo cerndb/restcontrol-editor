@@ -81,6 +81,7 @@
                 <option value="" > Subcategory </option>
                 <script>
                 $("#select-domain").change(function() {
+                    $("#select-subcategory").html("");
                     var url = 'http://pcitdb46.cern.ch:5000/api/v1/list/subcategories/';
                     var domain = $("#select-domain").val()
                     console.log("Fetching list of subcategories for " + domain);
@@ -100,6 +101,7 @@
                 <option value=""> Type </option>
                 <script>
                 $("#select-subcategory").change(function() {
+                    $("#select-type").html("");
                     var url = 'http://pcitdb46.cern.ch:5000/api/v1/list/types/';
                     var domain = $("#select-domain").val();
                     var subcategory = $("#select-subcategory").val();
