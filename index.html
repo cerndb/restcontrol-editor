@@ -137,17 +137,14 @@
                         var domain = $("#select-domain").val();
                         var subcategory = $("#select-subcategory").val();
                         var type = $("#select-type").val();
-                        var url = API + domain;
-                        console.log('Domain ' + domain);
-                        console.log('Subcategory ' + subcategory);
-                        console.log('Type ' + type);
-                        console.log('url ' + url);
-                        if (subcategory != null) {
-                            url += '/' + subcategory
+                        var url = API.concat(domain);
+                        if ((subcategory != null) && (subcategory != '')) {
+                            url = url.concat('/', subcategory);
+                            if ((type != null) && (type != '')) {
+                                url = url.concat('/', type);
+                                }
                         }
-                        if (type != null) {
-                            url += '/' + type
-                        }
+
                         console.log('url ' + url);
                         var entities;
                         $.getJSON(url, null, function(data) {
