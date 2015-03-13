@@ -188,9 +188,16 @@
                 <script>
                 var API = "http://pcitdb46.cern.ch:5000/api/v1/entities/";
 
-                // create the editor
+                // Set options and create the editor
                 var container = document.getElementById("jsoneditor");
-                var editor = new JSONEditor(container);
+                var options = {
+                    mode: 'tree',
+                    modes: ['code', 'tree'], // allowed modes
+                    error: function (err) {
+                      alert(err.toString());
+                    }
+                };
+                var editor = new JSONEditor(container,options);
 
                 $("#edit").submit(function ( event ) {
                     event.preventDefault();
